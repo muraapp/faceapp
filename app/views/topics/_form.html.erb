@@ -1,0 +1,20 @@
+<%= form_for(@topic) do |f| %>
+  <% if @topic.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= @topic.errors.count %> 件のエラーがあります。</h2>
+
+      <ul>
+      <% @topic.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.text_area :content, class: "form-control", placeholder: "何か書く..."%>
+  </div>
+  <div class="actions">
+    <%= f.submit "投稿する" , class: "btn btn-primary" %>
+  </div>
+<% end %>

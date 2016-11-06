@@ -1,0 +1,36 @@
+<div class="container">
+  <p id="notice"><%= notice %></p>
+  <p id="notice"><%= alert %></p>
+
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3 col-sm-10 col-sm-offset-1">
+    <h1>My Topics</h1>
+
+    <%= render 'form' %>
+    <% @topics.each do |topic| %>
+    <br>
+      <div class="well well-sm">
+          <div class="row">
+            <div class="col-md-2">
+            </div>
+            <div class="col-md-10">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <p class="content"><%= topic.content %></p>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-12">
+              <hr>
+              <p><%= link_to 'コメント |', topic %><%= link_to ' 編集 |', edit_topic_path(topic.id) %><%= link_to ' 削除', topic, method: :delete, data: { confirm: 'Are you sure?' } %></p>
+            </div>
+          </div>
+          <!--%= render partial: 'comments/index', locals: { comments: topic.comments, topic: topic } %-->
+      </div>　　
+    <% end %>
+    </div>
+  </div>
+</div>

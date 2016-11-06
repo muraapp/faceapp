@@ -1,0 +1,8 @@
+<%= form_for(@topic) do |f| %>
+  <%= f.label :content %>
+  <%= f.text_field :content %>
+  <br>
+  <%= f.submit %>
+<% end %>
+
+<%= link_to "TOPIC一覧画面にもどる", topics_path %>
