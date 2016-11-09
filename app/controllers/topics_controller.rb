@@ -13,6 +13,7 @@ class TopicsController < ApplicationController
   def create
     @topics = Topic.all
     @topic = Topic.new(topics_params)
+    @topic.user_id = current_user.id
     if @topic.save
       redirect_to topics_path, notice: "トピックを作成しました！"
     else
