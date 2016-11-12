@@ -12,8 +12,11 @@
       <div class="well well-sm">
           <div class="row">
             <div class="col-md-2">
+              <%= profile_img(topic.user) if profile_img(topic.user) %>
             </div>
             <div class="col-md-10">
+              <p class="name"><%= topic.user.name %></p>
+              <p><%= topic.created_at.strftime("%m月%d日 %H時%M分") %></p>
             </div>
           </div>
           <div class="row">
