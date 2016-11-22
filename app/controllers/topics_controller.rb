@@ -50,4 +50,10 @@ class TopicsController < ApplicationController
       @topic = Topic.find(params[:id])
     end
 
+    def correct_user
+      if current_user.id != @topic.user.id
+        redirect_to logout_path, alert: "この操作はできません。"
+      end
+    end   
+
 end
