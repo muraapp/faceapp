@@ -1,0 +1,16 @@
+<div class="container">
+
+    <h1>友達</h1>
+    <div class="row">
+    <% @users.each do |user| %>
+      <% if current_user.following?(user) && user.following?(current_user) && user.id != current_user.id %>
+
+        <div class="container-child col-md-4 col-sm-4 col-xs-12 ">
+            <div class="well well-sm user name">
+              <p class="name"><%= profile_img(user) + " " %><%= user.name %></p>
+              <p><%= link_to 'メッセージを送る', conversations_path(sender_id: current_user.id, recipient_id: user.id), method: 'post', class: "btn btn-sm btn-primary"%></p>
+              <p><%= link_to 'Topicsを見る', groups_path(user), class: "btn btn-sm btn-success" %></p>
+            </div>
+        </div>
+      <% end %>
+    <% end %>
