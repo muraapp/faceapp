@@ -12,7 +12,7 @@
   <header>
     <ul>
       <li><%= link_to "Faceapp", topics_path %></li>
-      <li><%= link_to "ブログ", topics_path %></li>
+      <li><%= link_to "トピック", topics_path %></li>
       <li><%= link_to 'ユーザー一覧', users_path if user_signed_in? %></li>
       <li><%= link_to "友達", groups_users_path %></li>
       <% if user_signed_in? %>
@@ -25,8 +25,7 @@
       <% end %>
     </ul>
   </header>
-
-<%= yield %>
+  <%= yield %>
 
   <footer>
     <p>運営会社DIVE INTO CODE株式会社</p>

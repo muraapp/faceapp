@@ -2,7 +2,8 @@ class TopicsController < ApplicationController
   before_action :set_topic, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
   def index
-    @topics = Topic.all
+    # @topics = Topic.all
+    @topics = Topic.where(user_id: current_user.id).order(updated_at: :desc)
     @topic = Topic.new
   end
 
@@ -54,6 +55,6 @@ class TopicsController < ApplicationController
       if current_user.id != @topic.user.id
         redirect_to logout_path, alert: "この操作はできません。"
       end
-    end   
+    end
 
 end
