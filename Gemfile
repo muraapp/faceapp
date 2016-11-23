@@ -48,11 +48,11 @@ group :development, :test do
   gem 'capistrano-rails'
   gem 'capistrano-rbenv'
   gem 'capistrano3-unicorn'
-  
+
 end
 
 gem 'twitter-bootstrap-rails'
-gem 'rails_12factor', group: :production
+# gem 'rails_12factor', group: :production
 gem 'devise'
 gem 'faker'
 
