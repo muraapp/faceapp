@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :correct_user, only: [:show,:edit,:update]
+
   def index
     @users = User.all
   end
@@ -8,4 +10,6 @@ class UsersController < ApplicationController
     @user = current_user
     @users = User.all
   end
+
+
 end
