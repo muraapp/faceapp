@@ -1,5 +1,7 @@
 class TopicsController < ApplicationController
   before_action :set_topic, only: [:show, :edit, :update, :destroy]
+  before_action :correct_user, only: [:show]
+
   before_action :authenticate_user!
   def index
     # @topics = Topic.all
@@ -14,6 +16,7 @@ class TopicsController < ApplicationController
   def show
     @comment = @topic.comments.build
     @comments = @topic.comments
+
   end
 
   def create
@@ -52,9 +55,12 @@ class TopicsController < ApplicationController
     end
 
     def correct_user
-      if current_user.id != @topic.user.id
-        redirect_to logout_path, alert: "この操作はできません。"
+      unless current_user == @topic.user
+        redirect_to root_path, alert: "この操作はできません。"
       end
     end
+
+
+
 
 end
