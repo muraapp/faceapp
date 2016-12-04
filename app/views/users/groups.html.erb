@@ -9,7 +9,7 @@
             <div class="well well-sm user name">
               <p class="name"><%= profile_img(user) + " " %><%= user.name %></p>
               <p><%= link_to 'メッセージを送る', conversations_path(sender_id: current_user.id, recipient_id: user.id), method: 'post', class: "btn btn-sm btn-primary"%></p>
-              <p><%= link_to 'トピックを見る', groups_path(user), class: "btn btn-sm btn-success" %></p>
+              <p><%= link_to 'トピックを見る', groups_path(id: user.id), class: "btn btn-sm btn-success" %></p>
             </div>
         </div>
       <% end %>

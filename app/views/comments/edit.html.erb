@@ -1,0 +1,19 @@
+<div class="container">
+　<p id="notice"><%= notice %><%= alert %></p>
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3 col-sm-10 col-sm-offset-1">
+            <h1>コメントを編集する</h1>
+
+            <%= form_for([@topic, @comment], url: topic_comment_path, remote: true) do |f| %>
+              <%= f.hidden_field :topic_id %>
+              <div class="field">
+                <%= f.text_field :content, placeholder: "コメント", class: "form-control"  %>
+              </div>
+              <div class="actions">
+                <p><%= f.submit "コメントを更新する" %></p>
+                <p><%= link_to "戻る", topic_path(@topic) %></p>
+              </div>
+            <% end %>
+        </div>
+    </div>
+</div>
