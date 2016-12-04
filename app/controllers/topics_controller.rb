@@ -1,6 +1,6 @@
 class TopicsController < ApplicationController
   before_action :set_topic, only: [:show, :edit, :update, :destroy]
-  before_action :correct_user, only: [:show]
+  before_action :correct_user, only: [:show, :edit, :update, :destroy]
 
   before_action :authenticate_user!
   def index
@@ -26,9 +26,8 @@ class TopicsController < ApplicationController
     if @topic.save
       redirect_to topics_path, notice: "トピックを作成しました！"
       NoticeMailer.sendmail_topic(@topic).deliver
-
     else
-      render 'index'
+      redirect_to topics_path, notice: "トピックが空欄です！"
     end
   end
 

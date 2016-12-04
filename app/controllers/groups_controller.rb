@@ -1,12 +1,10 @@
 class GroupsController < ApplicationController
   before_action :authenticate_user!
-  # before_action :friends, only: [:index]
-  # before_action :myself, only: [:show]
+  before_action :correct_user, only: [:index, :show, :edit, :update, :destroy]
 
   def index
-    @topics = Topic.where(user_id: params[:format]).order(updated_at: :desc)
-    @user = User.find(params[:format])
-    
+    @topics = Topic.where(user_id: params[:id]).order(updated_at: :desc)
+
   end
 
   def show
@@ -16,17 +14,15 @@ class GroupsController < ApplicationController
   end
 
   private
-    #  def friends
-    #    @topic = Topic.find(params[:id])
-    #    unless current_user.following?(@topic.user) && @topic.user.following?(current_user)
-    #      redirect_to groups_path, alert: "このユーザーは友達ではありません。"
-    #    end
-    #  end
 
-    # def myself
-    #   unless @topic.user.id == current_user.id
-    #     redirect_to groups_path, alert: "違う"
-    #   end
-    # end
+    def correct_user
+      @user = User.find(params[:id])
+       unless current_user.following?(@user) && @user.following?(current_user)
+         redirect_to root_path, alert: "このユーザーは友達ではありません。"
+       end
+    end
+
+    
+
 
 end
