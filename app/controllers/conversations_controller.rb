@@ -1,6 +1,7 @@
 class ConversationsController < ApplicationController
   before_action :authenticate_user!
-  
+  # before_action :correct_user, only: [:index, :show, :edit, :update, :destroy]
+
   def index
     @users = User.all
     @conversations = Conversation.all
@@ -20,4 +21,13 @@ class ConversationsController < ApplicationController
     def conversation_params
       params.permit(:sender_id, :recipient_id)
     end
+
+    # def correct_user
+    #    @user = User.find(params[:conversation_id])
+    #     unless current_user == @user
+    #       redirect_to root_path, alert: "メッセージ見れません。"
+    #     end
+    # end
+
+
 end

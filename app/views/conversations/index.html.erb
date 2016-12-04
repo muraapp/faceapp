@@ -4,13 +4,18 @@
       <h2>メッセージ一覧</h2>
     </thead>
     <tbody>
-      <td>
+
     <% @conversations.each do |conversation| %>
+
         <% if conversation.target_user(current_user).present? %>
+        <tr>
+        <td>
         <%= link_to conversation.target_user(current_user).name, conversation_messages_path(conversation)%>
+      </td>
+    </tr>
+
         <% end %>
     <% end %>
-      </td>
 
   </tbody>
   </table>
