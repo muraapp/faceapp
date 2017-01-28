@@ -12,8 +12,8 @@ CarrierWave.configure do |config|
 
   case Rails.env
     when 'production'
-      config.fog_directory = 'faceapp-pro'
-      config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/faceapp-pro'
+      config.fog_directory = 'faceapp-pro-1'
+      config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/faceapp-pro-1'
     # when 'development'
     #   config.fog_directory = 'faceapp-development'
     #   config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/faceapp-development'
