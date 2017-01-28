@@ -1,6 +1,7 @@
 class ConversationsController < ApplicationController
   before_action :authenticate_user!
-  # before_action :correct_user, only: [:index, :show, :edit, :update, :destroy]
+  before_action :correct_user, only: [:index, :show, :edit, :update, :destroy]
+
 
   def index
     @users = User.all
@@ -23,11 +24,19 @@ class ConversationsController < ApplicationController
     end
 
     # def correct_user
-    #    @user = User.find(params[:conversation_id])
-    #     unless current_user == @user
-    #       redirect_to root_path, alert: "メッセージ見れません。"
-    #     end
-    # end
+    #     @user = User.find(params[:conversation_id])
+    #      unless current_user == @user
+    #        redirect_to root_path, alert: "メッセージ見れません。"
+    #      end
+    #  end
+
+    def correct_user
+      @user = User.find(params[:conversation_id])
+       unless current_user.following?(@user) && @user.following?(current_user)
+         redirect_to root_path, alert: "このユーザーは友達ではないのでメッセージを見れません。"
+       end
+    end
+
 
 
 end

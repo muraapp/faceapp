@@ -3,7 +3,8 @@ class MessagesController < ApplicationController
     @conversation = Conversation.find(params[:conversation_id])
   end
 
-  before_action :correct_user, only: [:index, :show, :edit, :update, :destroy]
+  # before_action :correct_user, only: [:index, :show, :edit, :update, :destroy]
+
 
   def index
     @messages = @conversation.messages
@@ -40,10 +41,11 @@ class MessagesController < ApplicationController
       params.require(:message).permit(:body, :user_id)
     end
 
-    def correct_user
-        @conversation = Conversation.find(params[:conversation_id])
-          if current_user.id != @conversation.sender_id || current_user.id == @conversation.recipient_id
-            redirect_to root_path, alert: "メッセージ見れません。"
-          end
-    end
+    # def correct_user
+    #     @conversation = Conversation.find(params[:conversation_id])
+    #       if current_user.id != @conversation.sender_id || current_user.id == @conversation.recipient_id
+    #         redirect_to root_path, alert: "メッセージ見れません。"
+    #       end
+    # end
+
 end
