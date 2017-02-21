@@ -43,10 +43,9 @@ class MessagesController < ApplicationController
 
     def correct_user
          @conversation = Conversation.find(params[:conversation_id])
-         
            unless (current_user.id == @conversation.sender_id) || (current_user.id == @conversation.recipient_id)
              redirect_to root_path, alert: "友達ではないのでメッセージは見れません。"
            end
-     end
+    end
 
 end
